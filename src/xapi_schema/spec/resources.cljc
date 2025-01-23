@@ -94,6 +94,9 @@
 (s/def :xapi.statements.GET.request.params/until
   ::xs/timestamp)
 
+(s/def :xapi.statements.GET.request.params/short-id
+  string?)
+
 (s/def :xapi.statements.GET.request.params/limit
   (json
    (s/int-in 0 #?(:clj Long/MAX_VALUE
@@ -147,6 +150,7 @@
                    :xapi.statements.GET.request.params/since
                    :xapi.statements.GET.request.params/until
                    :xapi.statements.GET.request.params/limit
+                   :xapi.statements.GET.request.params/short-id
                    :xapi.statements.GET.request.params/format
                    :xapi.statements.GET.request.params/attachments
                    :xapi.statements.GET.request.params/ascending]))
