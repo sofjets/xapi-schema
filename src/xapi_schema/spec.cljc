@@ -1251,6 +1251,9 @@
 (s/def :statement/objectType
   #{"SubStatement"})
 
+(s/def :statement/short-id
+  ::string-not-empty)
+
 (s/def ::statement
   (conform-ns "statement"
               (s/and
@@ -1264,7 +1267,8 @@
                              :statement/stored
                              :statement/authority
                              :statement/attachments
-                             :statement/version])
+                             :statement/version
+			     :statement/short-id])
                (restrict-keys
                 :statement/actor
                 :statement/verb
@@ -1276,7 +1280,8 @@
                 :statement/stored
                 :statement/authority
                 :statement/attachments
-                :statement/version)
+                :statement/version
+		:statement/short-id)
                (fn valid-context? [s]
                  (if (let [s-o (:statement/object s)]
                        (or (:activity/objectType s-o)
